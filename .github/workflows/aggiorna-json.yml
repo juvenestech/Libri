@@ -1,0 +1,56 @@
+name: Aggiorna file JSON da Google Sheets
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  aggiorna-json:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Configura l'autenticazione Google API
+        uses: google-github-actions/setup@v2
+        with:
+          project_id: ${{ secrets.GOOGLE_CLOUD_PROJECT }}
+          service_account_file: ${{ secrets.GOOGLE_KEY_JSON }}
+          scopes: https://www.googleapis.com/auth/spreadsheets
+
+      - name: Installa librerie Google API
+        run: |
+          pip install google-api-python-client
+
+      - name: Recupera i dati da Google Sheets
+        run: |
+          import os
+          import gspread
+          from oauth2client.service_account import ServiceAccountCredentials
+
+          # Carica le credenziali del file JSON
+          credentials = ServiceAccountCredentials.from_json_keyfile_name(
+              os.environ['GOOGLE_KEY_JSON'],
+              scopes=['https://www.googleapis.com/auth/spreadsheets'])
+
+          # Apri il foglio Google Sheets
+          gc = gspread.authorize(credentials)
+          sheet_id = '16GqYQj7m8cMQjroAM9sHZs47iMNaDYvwTsa2DnxXBMg'
+          sh = gc.open_by_key(sheet_id)
+          
+          # Recupera i dati dal foglio
+          worksheet = sh.Libri
+          data = worksheet.get_all_values()
+
+          # Converte i dati in formato JSON
+          json_data = json.dumps(data)
+
+          # Scrivi i dati JSON in un file
+          with open('data.json', 'w') as f:
+            f.write(json_data)
+
+      - name: Aggiorna file JSON nel repository
+        run: |
+          git add data.json
+          git commit -m "Aggiorna file JSON da Google Sheets"
+          git push
