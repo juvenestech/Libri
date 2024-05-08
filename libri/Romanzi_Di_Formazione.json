@@ -1,0 +1,1 @@
+{"results":[{"command":{"func":"getData","kwargs":[{"range":"'Lingue'!A:G","hasHeaderRow":true,"worksheetTitle":"Lingue","minCol":1,"maxCol":7},null]},"result":{"rawData":[],"formatted":[],"header":["Titolo libro","Nome autore","Cognome autore","Casa Editrice","Data di pubblicazione","Numero di copie","Codice ISBN"],"range":"Lingue!A1:G1000"}}]}
