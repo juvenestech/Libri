@@ -27,7 +27,7 @@ jobs:
                 }
               }
             ]
-          outputFile: libri/Libri Quinto Piano.json
+          outputFile: libri/Libri_Quinto_Piano.json
         env:
               GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
               GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
@@ -121,7 +121,7 @@ jobs:
                 }
               }
             ]
-          outputFile: libri/Romanzi Rosa.json
+          outputFile: libri/Romanzi_Rosa.json
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
           GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
@@ -159,7 +159,7 @@ jobs:
                 }
               }
             ]
-          outputFile: libri/Romanzi Di Formazione.json
+          outputFile: libri/Romanzi_Di_Formazione.json
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
           GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
