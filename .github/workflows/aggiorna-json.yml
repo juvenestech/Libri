@@ -152,6 +152,7 @@ jobs:
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
           GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+        continue-on-error: true
         
       - name: Ottieni i dati di "Romanzi Di Formazione" da Google Sheets
         uses: asibs/gsheet.action.asibs@release
