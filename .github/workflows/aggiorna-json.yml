@@ -29,30 +29,29 @@ jobs:
               const sheetName = sheet.trim();
               console.log(`Getting data for sheet: ${sheetName}`);
               const outputFile = `libri/${sheetName}.json`;
-              core.setOutput('sheetName', sheetName);
-              core.setOutput('outputFile', outputFile);
-              await actions.getAsInput('gsheet-action'); // Call the next step
-            }
-
-      - id: gsheet-action
-        name: Get data from Google Sheet
-        uses: asibs/gsheet.action.asibs@release
-        with:
-          spreadsheetId: ${{ secrets.GSHEET_SPREADSHEET_ID }}
-          commands: |-  
-            [
-              {
-                "command": "getData",
-                "args": {
-                  "range": "{{ core.getInput('sheetName') }}!A:G",
-                  "hasHeaderRow": true
+              await actions.run({
+                name: 'Get data from Google Sheet',
+                uses: 'asibs/gsheet.action.asibs@release',
+                with: {
+                  spreadsheetId: ${{ secrets.GSHEET_SPREADSHEET_ID }},
+                  commands: |-
+                    [
+                      {
+                        "command": "getData",
+                        "args": {
+                          "range": "{{ sheetName }}!A:G",
+                          "hasHeaderRow": true
+                        }
+                      }
+                    ],
+                  outputFile: outputFile,
+                  env: {
+                    GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }},
+                    GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+                  }
                 }
-              }
-            ]
-          outputFile: ${{ core.getInput('outputFile') }}
-        env:
-          GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
-          GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+              });
+            }
 
       - name: Commit libri.json
         run: |
