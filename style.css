@@ -44,7 +44,8 @@ footer{
     background-position: center;
     background-repeat: no-repeat;
     height: 700px;
-    width: 590px;
+    width: 480px;
+    display: inline-block;
 }
 
 .libro h1{
