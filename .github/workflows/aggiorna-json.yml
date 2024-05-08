@@ -11,7 +11,6 @@ jobs:
     steps:
       - name: 'Checkout GitHub Action'
         uses: actions/checkout@v3
-
   
       - name: Ottieni i dati di "Libri Quinto Piano" da Google Sheets
         uses: asibs/gsheet.action.asibs@release
@@ -29,8 +28,9 @@ jobs:
             ]
           outputFile: libri/Libri_Quinto_Piano.json
         env:
-              GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
-              GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+          GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
+          GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+        continue-on-error: true
         
       - name: Ottieni i dati di "Classici" da Google Sheets
         uses: asibs/gsheet.action.asibs@release
@@ -48,8 +48,10 @@ jobs:
             ]
           outputFile: libri/Classici.json
         env:
-              GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
-              GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+          GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
+          GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+        continue-on-error: true
+
       - name: Ottieni i dati di "Romanzo" da Google Sheets
         uses: asibs/gsheet.action.asibs@release
         with:
@@ -68,6 +70,7 @@ jobs:
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
           GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+        continue-on-error: true
         
       - name: Ottieni i dati di "Lingue" da Google Sheets
         uses: asibs/gsheet.action.asibs@release
@@ -87,6 +90,8 @@ jobs:
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
           GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+        continue-on-error: true
+        
         
       - name: Ottieni i dati di "Avventura" da Google Sheets
         uses: asibs/gsheet.action.asibs@release
@@ -106,6 +111,7 @@ jobs:
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
           GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+        continue-on-error: true
         
       - name: Ottieni i dati di "Romanzi Rosa" da Google Sheets
         uses: asibs/gsheet.action.asibs@release
@@ -125,6 +131,7 @@ jobs:
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
           GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+        continue-on-error: true
         
       - name: Ottieni i dati di "Manuali" da Google Sheets
         uses: asibs/gsheet.action.asibs@release
