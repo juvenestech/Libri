@@ -1,53 +1,69 @@
-body{
+body {
     font-family: Arial, sans-serif;
 }
-header{
-    background-color: #f0f0f0;
-    padding: 10px;
-    text-align: center;
-}
-#search-bar{
-    margin-left: 20px;
-}
-nav ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-nav ul li{
 
-    display: inline;
-    margin-right: 10px;
-}
-#book-categories, #featured-books{
-    margin: 20px;
-    padding: 10px;
-    background-color: #e9e9e9;
-}
-#featured-books{
-    margin-bottom: 10px;
-}
-footer{
+nav {
+    display: flex;
+    justify-content: space-between;
     background-color: #f0f0f0;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
+    padding: 1px;
 }
 
-.libro{
+.search-bar {
+    display: flex;
+}
+
+.search-bar input, .search-bar button {
+    padding: 10px;
+    margin: 1px;
+}
+
+.logo {
+    display: block;
+    margin: 10px 0;
+    height: 100px;
+    width: auto;
+}
+
+#categories {
+    background-color: lightgray;
+    padding: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+address {
+    font-style: normal;
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align:left ;
+}
+
+.libro {
     background-image: url("images/libro.svg");
     margin: 10px;
     padding: 20px;
     border-radius: 10px;
     background-position: center;
     background-repeat: no-repeat;
-    height: 700px;
-    width: 480px;
-    display: inline-block;
+    height: 800px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    text-align: center;
 }
 
-.libro h1{
+.libro h1 {
     color:red;
+    margin-top: 10%; /* Aggiustare a seconda dell'altezza dell'immagine di sfondo */
+}
+
+.libro h3 {
+    
+    margin-top: 0; /* Rimuove lo spazio aggiuntivo per posizionarlo subito sotto l'h1 */
 }
