@@ -1,8 +1,8 @@
 name: Aggiorna file JSON da Google Sheets
 
 on:
-  push:
-    branches: [ main ]
+  workflow_dispatch:
+    inputs: {}
 
 jobs:
   aggiorna-json:
@@ -18,15 +18,15 @@ jobs:
         with:
           spreadsheetId: ${{ secrets.GSHEET_SPREADSHEET_ID }}
           commands: | # list of commands, specified as a valid JSON string
-              [
-                  {
-                      "command": "getData",
-                      "args": {
-                          "range": "'Libri'!A:G",
-                          "hasHeaderRow": true
-                      }
-                  }
-              ]
+            [
+              {
+                "command": "getData",
+                "args": {
+                    "range": "'Libri'!A:G",
+                    "hasHeaderRow": true
+                }
+              }
+            ]
           outputFile: libri.json
         env:
               GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
@@ -38,5 +38,5 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add libri.json
           git commit -m "Aggiorna libri.json"
-          git push
-          
+          git push https://github.com/juvenestech/Libri.git
+        shell: /usr/bin/bash -e {0}
