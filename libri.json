@@ -1,3 +1,1 @@
-[{
-    
-}]
+{"results":[{"command":{"func":"getData","kwargs":[{"range":"'Libri'!A:G","hasHeaderRow":true,"worksheetTitle":"Libri","minCol":1,"maxCol":7},null]},"result":{"rawData":[["a","b","c","d","1","2","e"]],"formatted":[{"Nome libro":"a","Nome autore":"b","Cognome autore":"c","Editore":"d","Anno":"1","Numero libri":"2","ISBN":"e"}],"header":["Nome libro","Nome autore","Cognome autore","Editore","Anno","Numero libri","ISBN"],"range":"Libri!A1:G1000"}}]}
