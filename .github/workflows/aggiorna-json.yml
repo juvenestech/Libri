@@ -2,10 +2,7 @@ name: Aggiorna file JSON da Google Sheets
 
 on:
   workflow_dispatch:
-    inputs:
-      sheets:  # This input will hold a comma-separated list of sheet names
-        type: string
-        default: "Libri Quinto Piano, Classici, Romanzo, Lingue, Avventura, Romanzi Rosa, Manuali, Romanzi Di Formazione"
+    inputs: {}
 
 jobs:
   aggiorna-json:
@@ -15,44 +12,158 @@ jobs:
       - name: 'Checkout GitHub Action'
         uses: actions/checkout@v3
 
-      - name: Get sheet list from workflow dispatch
-        id: get_sheets
-        run: |
-          sheets_list=$(echo ${{ github.event.inputs.sheets }})
-
-      - name: Loop through sheets and get data
-        uses: actions/github-script@v7
+  
+      - name: Ottieni i dati di "Libri Quinto Piano" da Google Sheets
+        uses: asibs/gsheet.action.asibs@release
         with:
-          script: |
-            const sheets = ${{ steps.get_sheets.outputs.sheets_list }}.split(",");
-            for (const sheet of sheets) {
-              const sheetName = sheet.trim();
-              console.log(`Getting data for sheet: ${sheetName}`);
-              const outputFile = `libri/${sheetName}.json`;
-              await actions.run({
-                name: 'Get data from Google Sheet',
-                uses: 'asibs/gsheet.action.asibs@release',
-                with: {
-                  spreadsheetId: ${{ secrets.GSHEET_SPREADSHEET_ID }},
-                  commands: |-
-                    [
-                      {
-                        "command": "getData",
-                        "args": {
-                          "range": "{{ sheetName }}!A:G",
-                          "hasHeaderRow": true
-                        }
-                      }
-                    ],
-                  outputFile: outputFile,
-                  env: {
-                    GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }},
-                    GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
-                  }
+          spreadsheetId: ${{ secrets.GSHEET_SPREADSHEET_ID }}
+          commands: | # list of commands, specified as a valid JSON string
+            [
+              {
+                "command": "getData",
+                "args": {
+                    "range": "'Libri Quinto Piano'!A:G",
+                    "hasHeaderRow": true
                 }
-              });
-            }
-
+              }
+            ]
+          outputFile: libri/Libri Quinto Piano.json
+        env:
+              GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
+              GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+        
+      - name: Ottieni i dati di "Classici" da Google Sheets
+        uses: asibs/gsheet.action.asibs@release
+        with:
+          spreadsheetId: ${{ secrets.GSHEET_SPREADSHEET_ID }}
+          commands: | # list of commands, specified as a valid JSON string
+            [
+              {
+                "command": "getData",
+                "args": {
+                    "range": "'Classici'!A:G",
+                    "hasHeaderRow": true
+                }
+              }
+            ]
+          outputFile: libri/Classici.json
+        env:
+              GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
+              GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+      - name: Ottieni i dati di "Romanzo" da Google Sheets
+        uses: asibs/gsheet.action.asibs@release
+        with:
+          spreadsheetId: ${{ secrets.GSHEET_SPREADSHEET_ID }}
+          commands: | # list of commands, specified as a valid JSON string
+            [
+              {
+                "command": "getData",
+                "args": {
+                "range": "'Romanzo'!A:G",
+                "hasHeaderRow": true
+                }
+              }
+            ]
+          outputFile: libri/Romanzo.json
+        env:
+          GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
+          GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+        
+      - name: Ottieni i dati di "Lingue" da Google Sheets
+        uses: asibs/gsheet.action.asibs@release
+        with:
+          spreadsheetId: ${{ secrets.GSHEET_SPREADSHEET_ID }}
+          commands: | # list of commands, specified as a valid JSON string
+            [
+              {
+                "command": "getData",
+                "args": {
+                "range": "'Lingue'!A:G",
+                "hasHeaderRow": true
+                }
+              }
+            ]
+          outputFile: libri/Lingue.json
+        env:
+          GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
+          GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+        
+      - name: Ottieni i dati di "Avventura" da Google Sheets
+        uses: asibs/gsheet.action.asibs@release
+        with:
+          spreadsheetId: ${{ secrets.GSHEET_SPREADSHEET_ID }}
+          commands: | # list of commands, specified as a valid JSON string
+            [
+              {
+                "command": "getData",
+                "args": {
+                "range": "'Avventura'!A:G",
+                "hasHeaderRow": true
+                }
+              }
+            ]
+          outputFile: libri/Avventura.json
+        env:
+          GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
+          GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+        
+      - name: Ottieni i dati di "Romanzi Rosa" da Google Sheets
+        uses: asibs/gsheet.action.asibs@release
+        with:
+          spreadsheetId: ${{ secrets.GSHEET_SPREADSHEET_ID }}
+          commands: | # list of commands, specified as a valid JSON string
+            [
+              {
+                "command": "getData",
+                "args": {
+                "range": "'Romanzi Rosa'!A:G",
+                "hasHeaderRow": true
+                }
+              }
+            ]
+          outputFile: libri/Romanzi Rosa.json
+        env:
+          GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
+          GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+        
+      - name: Ottieni i dati di "Manuali" da Google Sheets
+        uses: asibs/gsheet.action.asibs@release
+        with:
+          spreadsheetId: ${{ secrets.GSHEET_SPREADSHEET_ID }}
+          commands: | # list of commands, specified as a valid JSON string
+            [
+              {
+                "command": "getData",
+                "args": {
+                "range": "'Manuali'!A:G",
+                "hasHeaderRow": true
+                }
+              }
+            ]
+          outputFile: libri/Manuali.json
+        env:
+          GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
+          GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+        
+      - name: Ottieni i dati di "Romanzi Di Formazione" da Google Sheets
+        uses: asibs/gsheet.action.asibs@release
+        with:
+          spreadsheetId: ${{ secrets.GSHEET_SPREADSHEET_ID }}
+          commands: | # list of commands, specified as a valid JSON string
+            [
+              {
+                "command": "getData",
+                "args": {
+                "range": "'Romanzi Di Formazione'!A:G",
+                "hasHeaderRow": true
+                }
+              }
+            ]
+          outputFile: libri/Romanzi Di Formazione.json
+        env:
+          GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
+          GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+        
       - name: Commit libri.json
         run: |
           git config --global user.name 'github-actions[bot]'
