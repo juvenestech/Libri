@@ -41,30 +41,50 @@ address {
     text-align:left ;
 }
 
+#libri {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;  /* Distribuisce gli spazi uniformemente tra i libri */
+    align-items: stretch;           /* Allinea gli elementi verticalmente */
+}
+
 .libro {
     background-image: url("images/libro.svg");
     margin: 10px;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 20px;  /* Ridotto il padding per adattarsi meglio */
+    border-radius: 20px;
     background-position: center;
     background-repeat: no-repeat;
-    height: 800px;
-    width: 500px;
+    height: 600px;
+    width: 25%;  /* Larghezza per avere 4 elementi per riga con spazio di margine */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    position: relative;
+    justify-content: center; /* Centra il contenuto verticalmente */
+    align-items: center; /* Centra il contenuto orizzontalmente */
     text-align: center;
+    position: relative; /* Permette un posizionamento relativo degli elementi figli */
 }
 
 .libro h1 {
-    color:red;
-    margin-top: 10%; /* Aggiustare a seconda dell'altezza dell'immagine di sfondo */
+    font-size: 2em; /* Dimensione del titolo proporzionata alla copertina */
+    color: red;
+    margin: auto 1 20px 0; /* Spinge il titolo al centro con un margine sotto */
+    width: 80%; /* Riduce leggermente la larghezza per il padding interno */
+    overflow: hidden; /* Previene il flusso di testo fuori dal contenitore */
+   
+    
 }
 
 .libro h3 {
-    
-    margin-top: 0; /* Rimuove lo spazio aggiuntivo per posizionarlo subito sotto l'h1 */
+    font-size: 1.5em; /* Dimensione per nome e cognome dell'autore */
+    position: absolute;
+    top: 20px; /* Posizionato in alto al centro */
+    width: 100%;
 }
 
+.libro h4 {
+    font-size: 1.2em; /* Dimensione per la casa editrice */
+    position: absolute;
+    bottom: 20px; /* Posizionato in basso al centro */
+    width: 100%;
+}

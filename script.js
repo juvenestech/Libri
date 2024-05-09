@@ -19,17 +19,19 @@ function displayLibri(libri) {
             .addClass('libro')
             .append($('<h1>').text(l["Titolo libro"]))
             .append($('<h3>').text(l["Nome autore"] + " " + l["Cognome autore"]))
-            .append($('<h4>').text("Editore:" + l["Casa Editrice"]))
+            .append($('<h4>').text("Editore: " + l["Casa Editrice"]))
             .appendTo('#libri');
     });
 }
 
+
 // Funzione per cercare e filtrare i libri
 function searchBook() {
-    const searchTerm = document.getElementById('search-bar').value.toLowerCase();
+    const searchTerm = $('#search-bar').val().toLowerCase();
     const libriFiltrati = tuttiLibri.filter(l =>
         l["Titolo libro"].toLowerCase().includes(searchTerm) ||
-        (l["Nome autore"].toLowerCase() + " " + l["Cognome autore"].toLowerCase()).includes(searchTerm)
+        (l["Nome autore"].toLowerCase() + " " + l["Cognome autore"].toLowerCase()).includes(searchTerm) ||
+        l["Casa Editrice"].toLowerCase().includes(searchTerm) // Aggiunto ricerca per editore
     );
     displayLibri(libriFiltrati);  // Visualizza solo i libri filtrati
 }
