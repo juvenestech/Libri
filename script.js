@@ -41,3 +41,4 @@ function toggleCategories() {
         categories.style.display = 'none';
     }
 }
+
