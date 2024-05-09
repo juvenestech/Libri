@@ -1,4 +1,4 @@
-const librerie = ["Libri Quinto Piano", "Classici", "Romanzo", "Lingue", "Avventura", "Romanzi Rosa", "Manuali", "Romanzi Di Formazione"];
+const librerie = ["Libri_Quinto_Piano", "Classici", "Romanzo", "Lingue", "Avventura", "Romanzi_Rosa", "Manuali", "Romanzi_Di_Formazione"];
 let tuttiLibri = [];  // Array per conservare tutti i libri caricati
 
 // Caricamento dei libri
@@ -23,6 +23,17 @@ function displayLibri(libri) {
             .appendTo('#libri');
     });
 }
+// Funzione per cercare e filtrare i libri
+function searchBook() {
+    const searchTerm = $('#search-bar').val().toLowerCase();
+    const libriFiltrati = tuttiLibri.filter(l =>
+        l["Titolo libro"].toLowerCase().includes(searchTerm) ||
+        (l["Nome autore"].toLowerCase() + " " + l["Cognome autore"].toLowerCase()).includes(searchTerm) ||
+        l["Casa Editrice"].toLowerCase().includes(searchTerm)
+    );
+    displayLibri(libriFiltrati);  // Visualizza solo i libri filtrati
+}
+
 
 
 // Funzione per cercare e filtrare i libri
