@@ -35,18 +35,9 @@ function searchBook() {
     );
     displayLibri(libriFiltrati);  // Visualizza solo i libri filtrati
 }
-
-// Funzione per gestire la visibilità delle categorie
-function toggleCategories() {
-    var categories = document.getElementById('categories');
-    if (categories.style.display === 'none') {
-        categories.style.display = 'block';
-    } else {
-        categories.style.display = 'none';
-    }
-}
-
-// Aggiunta dell'ascoltatore di eventi alla barra di ricerca per attivare la ricerca mentre si digita
 $(document).ready(function() {
-    $('#search-bar').on('input', searchBook);
+    $('.search-bar').on('submit', function(event) {
+        event.preventDefault();  // Previene il comportamento di default del form che causa il refresh della pagina
+        searchBook();
+    });
 });
