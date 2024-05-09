@@ -6,7 +6,7 @@ $(librerie).each((i, libreria) =>
     fetch(`libri/${libreria}.json`)
     .then(file => file.json())
     .then(json => {
-        tuttiLibri = tuttiLibri.concat(json.results[0].result.formatted);  // Assumiendo una struttura simile per ogni JSON
+        tuttiLibri = tuttiLibri.concat(json.results[0].result.formatted); 
         displayLibri(tuttiLibri);  // Funzione per visualizzare tutti i libri inizialmente
     })
 );
@@ -19,6 +19,7 @@ function displayLibri(libri) {
             .addClass('libro')
             .append($('<h1>').text(l["Titolo libro"]))
             .append($('<h3>').text(l["Nome autore"] + " " + l["Cognome autore"]))
+            .append($('<h4>').text("Editore:" + l["Casa Editrice"]))
             .appendTo('#libri');
     });
 }
