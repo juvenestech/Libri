@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Libreria Juvenes</title>  
+    <title>Libreria Juvenes</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -12,20 +12,20 @@
     <header>
         <nav>
             <ul>
-                <li><a href="posta@juvenes.it"><i class="fa fa-envelope"></i> posta@juvenes.it </a></li>
-                <li><a href="tel:+39342 627 2201"><i class="fa fa-phone"></i> +39 342 627 2201</a></li>
-                <li><a href="https://www.google.it/maps/place/Piazza+Domenicani,+15,+39100+Bolzano+BZ/@46.4968444,11.3488176,17z/data=!3m1!4b1!4m6!3m5!1s0x47829e7939f66767:0x83501003dc64ead9!8m2!3d46.4968444!4d11.3513925!16s%2Fg%2F11b8v6xwk6?entry=ttu" target="_blank"><i class="fa fa-map-marker-alt"></i> Piazza Domenicani, 15 · Bolzano</a></li>
-                <li><a href="#"><i class="fa fa-clock"></i> Lun-Ven 9:00-18:00</a></li>
+                <li><a href="mailto:posta@juvenes.it"><i class="fa fa-envelope"></i> posta@juvenes.it</a></li>
+                <li><a href="tel:+393426272201"><i class="fa fa-phone"></i> +39 342 627 2201</a></li>
+                <li><a href="https://www.google.it/maps/place/Piazza+Domenicani,+15,+39100+Bolzano+BZ" target="_blank"><i class="fa fa-map-marker-alt"></i> Piazza Domenicani, 15 · Bolzano</a></li>
+                <li><a href="#"><i class="fa fa-clock"></i> Dal Lunedì al Venerdì: 13:30 - 18:30</a></li>
             </ul>
         </nav>
-        <img src="juvenes.png" alt="Logo Juvenes" style="height: 100px;">
-    </header>
-    <div style="display: flex; align-items: center; padding: 20px;">
-        <div class="search-bar">
-            <input id="search-bar" type="text" placeholder="Cerca libro....">
-            <button onclick="searchBook()">Cerca</button>
+        <div style="display: flex; align-items: center;">
+            <img src="juvenes.png" alt="Logo Juvenes" style="height: 150px;">
+            <form class="search-bar" style="margin-left: 30px;">
+                <input id="search-bar" type="text" placeholder="Cerca libro....">
+                <button type="submit" onclick="searchBook()"><i class="fas fa-search"></i></button>
+            </form>
         </div>
-    </div>
+    </header>
     <div id="categories" style="display: none;">Categoria 1, Categoria 2, Categoria 3</div>
     <div id="libri"></div>
 </body>
