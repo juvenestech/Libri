@@ -14,16 +14,16 @@ $(librerie).each((i, libreria) =>
 
 // Funzione per visualizzare i libri
 function displayLibri(libri) {
-    $('#libri').empty();  // Pulisce i libri attuali visualizzati
+    $('#libri').empty(); // Pulisce i libri attuali visualizzati
     libri.forEach(l => {
-        $('<div>')
-            .addClass('libro')
-            .append($('<h1>').text(l["Titolo libro"]))
-            .append($('<h3>').text(l["Nome autore"] + " " + l["Cognome autore"]))
-            .append($('<h4>').text("Editore: " + l["Casa Editrice"]))
-            .appendTo('#libri');
+        const card = $('<div>').addClass('libro');
+        card.append($('<h1>').text(l["Titolo libro"]));
+        card.append($('<h3>').text(l["Nome autore"] + " " + l["Cognome autore"]));
+        card.append($('<h4>').text("Editore: " + l["Casa Editrice"]));
+        $('#libri').append(card);
     });
 }
+
 
 // Funzione per cercare e filtrare i libri
 function searchBook() {
