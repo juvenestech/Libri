@@ -65,7 +65,7 @@ address {
     justify-content: space-between; /* Spazia equamente gli elementi dentro la card */
     align-items: center; /* Centra il contenuto orizzontalmente */
     text-align: center;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);  /* Ombra per un effetto di elevazione */
+    /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);  /* Ombra per un effetto di elevazione */
     position: relative;
 }
 .libro h1 {
