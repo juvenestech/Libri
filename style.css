@@ -39,7 +39,6 @@ padding: 0 10px;
     margin: 2px;
 }
 
-
 #categories {
     background-color: lightgray;
     padding: 10px;
@@ -65,53 +64,72 @@ address {
 }
 
 .libro {
-    background-image: url("images/libro.svg");
-    margin: 20px;
-    padding: 20px;
-    border-radius: 15px;
-    background-color: white;  /* Aggiunto per migliorare la leggibilità del testo su sfondo chiaro */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;  /* Assicura che l'immagine di sfondo copra completamente la card */
+    margin: 40px;
+    width: 300px;
     height: 450px;
-    width: 300px;  /* Dimensioni standard per una card */
+    perspective: 1000px; /* Dà una prospettiva per l'effetto 3D */
+}
+
+.libro-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.libro:hover .libro-inner {
+    transform: rotateY(180deg); /* Ruota la card di 180 gradi sull'asse Y */
+}
+
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Nasconde il retro quando non è rivolto verso l'utente */
+    backface-visibility: hidden;
+}
+
+.front {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Spazia equamente gli elementi dentro la card */
-    align-items: center; /* Centra il contenuto orizzontalmente */
-    text-align: center;
-    /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);  /* Ombra per un effetto di elevazione */
-    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-radius: 15px;
+    background-image: url("images/libro.svg");
+    background-size: cover;
+    background-position: center;
 }
+
+.back {
+    background-color: #f0f0f0;
+    color: black;
+    transform: rotateY(180deg); /* Ruota il retro di 180 gradi per corrispondere alla parte frontale quando la card è girata */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 15px;
+}
+
+/* Stili specifici per titolo, autore e editore */
 .libro h1 {
-    color: #e40f0f;
-    font-size: 18px; /* Dimensione del font adatta alla card */
-    margin: 20px 0; /* Margini ridotti per sfruttare lo spazio */
-    width: 90%; /* Larghezza interna della card */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal; /* Permette al testo di andare a capo */
+    color: #e40f0f; /* Colore rosso per il titolo */
+
 }
 
 .libro h3 {
-    color: #000000;
-    font-size: 16px; /* Leggermente più piccolo del titolo */
-    font-weight: bold; /* Rende il nome dell'autore in grassetto */
-    margin: 10px 0; /* Maggiore enfasi con maggiore spazio */
-    width: 90%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    color: #000; /* Colore nero per autore */
+    font-style: italic;
 }
 
-.libro h4 {
-    color: #000000;
-    font-size: 15px;
+.libro h4{
+    color: #000;/*Colore per editore*/
     font-style: italic;
-    margin: 30px 0;
-    width: 90%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+
 }
+
 

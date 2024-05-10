@@ -12,15 +12,25 @@ $(librerie).each((i, libreria) =>
     .catch(error => console.error('Errore nel caricare i libri:', error))  // Gestione degli errori nel caricamento dei libri
 );
 
-// Funzione per creare una card per ogni libro
 function createCard(libro) {
     const card = $('<div>').addClass('libro');
+    const cardInner = $('<div>').addClass('libro-inner');
+    const front = $('<div>').addClass('front');
+    const back = $('<div>').addClass('back');
+
     const title = $('<h1>').text(libro["Titolo libro"]);
     const author = $('<h3>').text(libro["Nome autore"] + " " + libro["Cognome autore"]);
     const publisher = $('<h4>').text("Editore: " + libro["Casa Editrice"]);
-    card.append(author, title , publisher);
+    const isbn = $('<p>').text("ISBN: " + libro["ISBN"]);
+
+    front.append(author, title, publisher);
+    back.append(isbn);
+    
+    cardInner.append(front, back);
+    card.append(cardInner);
     return card;
 }
+
 
 // Funzione modificata per visualizzare i libri usando le card
 function displayLibri(libri) {
