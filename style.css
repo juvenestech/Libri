@@ -34,8 +34,11 @@ padding: 0 10px;
     margin: 2px;
 }
 #logo {
-    height: 180px;
+    height: 200px;
+    padding: 10px;
+    margin: 2px;
 }
+
 
 #categories {
     background-color: lightgray;
