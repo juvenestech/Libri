@@ -48,3 +48,8 @@ $(document).ready(function() {
         searchBook();
     });
 });
+$(document).ready(function() {
+    $('.search-bar').on('input', function() {
+        searchBook();
+    });
+});
